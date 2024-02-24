@@ -2,24 +2,22 @@ import React from 'react'
 import Header from '../Header/Header'
 import Card from "./Card/Card"
 
-import { listarAspirantes, listarProfesiones } from '../../api/api'
 import { useState, useEffect } from 'react'
 export default function Home() {
     const [data, setData] = useState()
     const [profesiones, setProfesiones] = useState()
 
     useEffect(() => {
-        try {
-            const fetchData = async () => {
-                const response = await listarAspirantes()
-                const responseProfesion = await listarProfesiones()
-                setProfesiones(responseProfesion)
-                setData(response);
-            }
-            fetchData()
-        } catch (error) {
-            console.log("error en los datos");
-        }
+        fetch("http://localhost:3030/api/aspirantes")
+        .then((response) => response.json())
+        .then((data) =>
+            setData(data.data),
+        );
+        fetch("http://localhost:3030/api/profesiones")
+        .then((response) => response.json())
+        .then((data) =>
+            setProfesiones(data.data),
+        );
     }, [])
 
 

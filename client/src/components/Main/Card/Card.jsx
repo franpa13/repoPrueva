@@ -12,7 +12,7 @@ import fotoGiuli from "/imgUsers/foto4.jpg"
 import fotoAylu from "/imgUsers/foto1.jpg"
 import { Button, CardActionArea, CardActions, ButtonGroup, Box } from '@mui/material';
 
-export default function MultiActionAreaCard({ profesion, nombre, apellido, index }) {
+export default function MultiActionAreaCard({ profesion, nombre, apellido, index, linkedin }) {
     const buttons = [
         <Button key="one"><FaRegHeart /></Button>,
         <Button key="two"><FiMessageCircle /></Button>,
@@ -20,7 +20,10 @@ export default function MultiActionAreaCard({ profesion, nombre, apellido, index
     ];
     const fotos = [fotoFran, fotoAylu, fotoGiuli, fotoJose];
     console.log(profesion, nombre, apellido, "estos son nombres y apelkidps");
+
     return (
+
+
         <div className='w-full p-2  flex flex-col justify-center items-center md:w-1/3 '>
 
 
@@ -63,18 +66,20 @@ export default function MultiActionAreaCard({ profesion, nombre, apellido, index
                             gutterBottom variant="h5" component="div">
                             {`${nombre} ${apellido}`}
                         </Typography>
-                        <Typography
+
+
+                        {profesion && (<Typography
                             sx={{
 
-
                                 '@media (min-width: 600px)': {
-                                    fontSize: "20px",
+                                    fontSize: "13px",
                                 }
                             }}
                             variant="body2" color="text.secondary">
                             {profesion}
-                        </Typography>
-                    </CardContent>
+                        </Typography>)}
+                           {profesion===undefined && (<a className= 'font-semibold text-xxs text-blue-500 md:text-sm ' href={linkedin}>Linkedin :D</a>)}
+                        </CardContent>
                 </CardActionArea>
                 <CardActions>
                     <Box
