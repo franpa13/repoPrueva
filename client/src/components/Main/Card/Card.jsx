@@ -12,11 +12,11 @@ import fotoGiuli from "/imgUsers/foto4.jpg"
 import fotoAylu from "/imgUsers/foto1.jpg"
 import { Button, CardActionArea, CardActions, ButtonGroup, Box } from '@mui/material';
 
-export default function MultiActionAreaCard({ profesion, nombre, apellido, index, linkedin }) {
+export default function MultiActionAreaCard({ profesion, nombre, apellido, index, linkedin, numero }) {
     const buttons = [
         <Button key="one"><FaRegHeart /></Button>,
         <Button key="two"><FiMessageCircle /></Button>,
-        <Button key="three"><MdOutlineMail /></Button>,
+        <Button key="three"><MdOutlineMail /></Button>, 
     ];
     const fotos = [fotoFran, fotoAylu, fotoGiuli, fotoJose];
     console.log(profesion, nombre, apellido, "estos son nombres y apelkidps");
@@ -67,19 +67,33 @@ export default function MultiActionAreaCard({ profesion, nombre, apellido, index
                             {`${nombre} ${apellido}`}
                         </Typography>
 
-
                         {profesion && (<Typography
                             sx={{
 
                                 '@media (min-width: 600px)': {
-                                    fontSize: "13px",
+                                    fontSize: "15px",
                                 }
                             }}
                             variant="body2" color="text.secondary">
                             {profesion}
                         </Typography>)}
-                           {profesion===undefined && (<a className= 'font-semibold text-xxs text-blue-500 md:text-sm ' href={linkedin}>Linkedin :D</a>)}
+
+                           {profesion===undefined && numero===undefined && (<a className= 'font-semibold text-xxs text-blue-500 md:text-sm ' href={linkedin}>Linkedin :D</a>)}
+
+                           {linkedin===undefined && 
+                           (<Typography
+                            sx={{
+
+                                '@media (min-width: 600px)': {
+                                    fontSize: "15px",
+                                }
+                            }}
+                            variant="body2" color="text.secondary">
+                            {numero}
+                        </Typography>)
+                           }
                         </CardContent>
+                        
                 </CardActionArea>
                 <CardActions>
                     <Box
